@@ -1,5 +1,6 @@
 
 #time limit exceed error. To make this more performant, I could first of all not pop 0, but pop the end by reversing the data structure, and I could also make the island variable a set rather than a list (and not have to check if element is in it or not)
+#Another vastly improved fix would be to while building an island, check to see if it is part of grid1, and thus not have the ending loop to check. We cannot break out, as we still need to keep marking the island explored, to not check it later.
 class Solution:
     def countSubIslands(self, grid1: list[list[int]], grid2: list[list[int]]) -> int:
         n = len(grid1)
