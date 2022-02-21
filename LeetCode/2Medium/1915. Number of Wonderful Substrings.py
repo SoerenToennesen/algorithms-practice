@@ -5,19 +5,17 @@ class Solution:
         res = 0
         for substring in all_substrings:
             freq_dict = {}
+            odd_count = 0
             for c in substring:
                 if c not in freq_dict:
                     freq_dict[c] = 1
                 else:
                     freq_dict[c] += 1
-            count = 0
-            for key in freq_dict:
-                if freq_dict[key] % 2 == 1:
-                    count += 1
-                if count > 1:
-                    break
-            if not count > 1:
-                res += 1
+                if freq_dict[c] % 2 == 1:
+                    odd_count += 1
+                else:
+                    odd_count -= 1
+            if odd_count < 2: res += 1
         return res
 
 #test
