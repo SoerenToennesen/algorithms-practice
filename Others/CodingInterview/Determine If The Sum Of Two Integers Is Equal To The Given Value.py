@@ -4,6 +4,7 @@ from gettext import find
 
 #optimization thought:
 # - delete all vals bigger than the value to check
+# - make it a set instead, to delete duplicates
 # - sort the array
 # - start from lowest val (index 0) and compare with highest val (index 0)
 #    - if sum is larger, move highest val pointer one to the right, otherwise move lowest val pointer one to the left. Recurse until pointers meet.
