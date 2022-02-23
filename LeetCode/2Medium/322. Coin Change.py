@@ -1,5 +1,6 @@
 
 #dynamic programming problem
+# solution found online: https://dev.to/shivams136/leetcode-322-coin-change-solution-4kmd
 class Solution:
     def coinChange(self, coins: list[int], amount: int) -> int:
         if amount == 0: return 0
