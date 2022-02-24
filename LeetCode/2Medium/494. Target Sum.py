@@ -20,4 +20,4 @@ class Solution:
 solution = Solution()
 print(solution.findTargetSumWays(nums = [1,1,1,1,1], target = 3)) #5
 print(solution.findTargetSumWays(nums = [1], target = 1)) #1
-print(solution.findTargetSumWays(nums = [10,9,6,4,19,0,41,30,27,15,14,39,33,7,34,17,24,46,2,46], target = 45)) #??
+print(solution.findTargetSumWays(nums = [10,9,6,4,19,0,41,30,27,15,14,39,33,7,34,17,24,46,2,46], target = 45)) #6606
