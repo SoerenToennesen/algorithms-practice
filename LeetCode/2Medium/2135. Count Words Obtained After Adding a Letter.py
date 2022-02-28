@@ -11,7 +11,7 @@ class Solution:
     def wordCount(self, startWords: list[str], targetWords: list[str]) -> int:
         res = 0
         for target in targetWords:
-            for start in startWords:
+            for start in startWords: #optimiazation: we can store all words of start of certain length binned in a dictionary, such we avoid iterating through everything (precomputation step)
                 if len(target) == len(start) + 1:
                     start_bin = self.representAsBits(start) #optimization would be to recompute this and store it instead of doing it for each target
                     target_bin = self.representAsBits(target)
