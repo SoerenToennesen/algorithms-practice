@@ -13,7 +13,7 @@ class Solution:
         for target in targetWords:
             for start in startWords:
                 if len(target) == len(start) + 1:
-                    start_bin = self.representAsBits(start)
+                    start_bin = self.representAsBits(start) #optimization would be to recompute this and store it instead of doing it for each target
                     target_bin = self.representAsBits(target)
                     if (0 ^ (int(start_bin, 2) ^ int(target_bin, 2))) > 0 and int(start_bin, 2) | (int(start_bin, 2) ^ int(target_bin, 2)) == int(target_bin, 2):
                         res += 1
