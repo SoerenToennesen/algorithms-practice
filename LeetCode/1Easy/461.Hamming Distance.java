@@ -1,9 +1,9 @@
+import java.lang.*;
 
 class HammingDistance {
 
     public int solution(int x, int y) {
-
-        return x;
+        return bitCount(x ^ y);
     }
 
     public static void main(String[] args) {
