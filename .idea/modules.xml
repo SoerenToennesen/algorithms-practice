@@ -3,6 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/algorithms-practice.iml" filepath="$PROJECT_DIR$/.idea/algorithms-practice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LeetCode/1Easy/java/java-easy.iml" filepath="$PROJECT_DIR$/LeetCode/1Easy/java/java-easy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LeetCode/3Hard/java/java-hard.iml" filepath="$PROJECT_DIR$/LeetCode/3Hard/java/java-hard.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LeetCode/2Medium/java/java-medium.iml" filepath="$PROJECT_DIR$/LeetCode/2Medium/java/java-medium.iml" />
     </modules>
   </component>
 </project>

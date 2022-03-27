@@ -3,7 +3,7 @@ import java.lang.*;
 class HammingDistance {
 
     public int solution(int x, int y) {
-        return bitCount(x ^ y);
+        return Integer.bitCount(x ^ y);
     }
 
     public static void main(String[] args) {

@@ -8,7 +8,7 @@ class ConvertANumberToHexadecimal {
             '0', '1', '2', '3', '4', '5', '6', '7',
             '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'
     };
-    public int solution(int num) {
+    public String solution(int num) {
         StringBuilder hexBuilder = new StringBuilder(sizeOfIntInHalfBytes);
         hexBuilder.setLength(sizeOfIntInHalfBytes);
         for (int i = sizeOfIntInHalfBytes - 1; i >= 0; --i) {
@@ -17,8 +17,6 @@ class ConvertANumberToHexadecimal {
             num >>= numberOfBitsInAHalfByte;
         }
         return hexBuilder.toString();
-
-        return num;
     }
 
     public static void main(String[] args) {
