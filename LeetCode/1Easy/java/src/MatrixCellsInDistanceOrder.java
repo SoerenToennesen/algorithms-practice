@@ -3,8 +3,28 @@
 
 public class MatrixCellsInDistanceOrder {
 
-    private int[] solution(int rows, int cols, int rCenter, int cCenter) {
-        int[] ret = {1,2,3};
+    private int[][] solution(int rows, int cols, int rCenter, int cCenter) {
+        int[][] matrix = new int[rows][cols];
+        int visited = 0;
+        int[][] ret = new int[rows][cols];
+        int j = 0;
+        ret[j] = new int[]{rCenter, cCenter};
+        visited++;
+        j++;
+        while (visited < rows*cols) {
+            for (int i = 0; i < 4; i++) { //up, right, down, left
+                switch (i) {
+                    case 0:
+                        if (cCenter > 0) {
+                            ret[j] = new int[]{rCenter, cCenter - 1};
+                            cCenter--;
+                            visited++; // TODO: Revise this. Simply need to do a BFS, where you append each layer of the BFS to the ret array.
+                                       // This way, we kind of do a DFS...
+                        }
+                        break;
+                }
+            }
+        }
 
         return ret;
     }
