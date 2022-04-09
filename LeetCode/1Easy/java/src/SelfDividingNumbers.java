@@ -9,14 +9,13 @@ class SelfDividingNumbers {
         List<Integer> res = new ArrayList<Integer>();
         for (int i = left; i <= right; i++) {
             boolean add = true;
-            int temp = 0;
-            while(i > 0) {
-                temp = i % 10;
-                if (temp == 0 || temp % i != 0) {
+            String strNum = "" + i;
+            for (int j = 0; j < strNum.length(); j++) {
+                int digit = Integer.parseInt(String.valueOf(strNum.charAt(j)));
+                if (digit == 0 || i % digit != 0) {
                     add = false;
                     break;
                 }
-                i /= 10;
             }
             if (add) res.add(i);
         }
