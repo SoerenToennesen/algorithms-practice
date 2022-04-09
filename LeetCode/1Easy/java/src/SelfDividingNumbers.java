@@ -1,10 +1,26 @@
 
 // 728. Self Dividing Numbers
 
-class SelfDividingNumbers {
-    public int[] solution(int left, int right) {
+import java.util.ArrayList;
+import java.util.List;
 
-        return new int[] {left, right};
+class SelfDividingNumbers {
+    public List<Integer> solution(int left, int right) {
+        List<Integer> res = new ArrayList<Integer>();
+        for (int i = left; i <= right; i++) {
+            boolean add = true;
+            int temp = 0;
+            while(i > 0) {
+                temp = i % 10;
+                if (temp == 0 || temp % i != 0) {
+                    add = false;
+                    break;
+                }
+                i /= 10;
+            }
+            if (add) res.add(i);
+        }
+        return res;
     }
     public static void main(String[] args) {
         SelfDividingNumbers selfDividingNumbers = new SelfDividingNumbers();
