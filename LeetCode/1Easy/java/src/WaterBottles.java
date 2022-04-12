@@ -3,8 +3,12 @@
 
 class WaterBottles {
     public int solution(int numBottles, int numExchange) {
-        int res = 0;
-        return numBottles;
+        int res = numBottles;
+        while (numBottles >= numExchange) {
+            numBottles /= numExchange;
+            res += numBottles;
+        }
+        return res;
     }
 
     public static void main(String[] args) {
