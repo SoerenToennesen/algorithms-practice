@@ -1,7 +1,5 @@
 
-// Answer gotten from https://stackoverflow.com/questions/13465098/decimal-to-hexadecimal-converter-in-java
-
-// 405. ConvertANumberToHexadecimal
+// 661. Image Smoother
 
 class ImageSmoother {
     public int[][] solution(int[][] img) {
