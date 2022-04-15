@@ -1,6 +1,7 @@
 
 // 661. Image Smoother
 
+//Didn't understand this problem...
 class ImageSmoother {
     public int[][] solution(int[][] img) {
         int[][] test = new int[][] {{1,2,3},{1,2,3}};
