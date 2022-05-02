@@ -3,8 +3,14 @@
 
 class TeemoAttacking {
     public int solution(int[] timeSeries, int duration) {
+        int totalDuration = 0;
+        if (timeSeries.length == 0) return 0;
+        for (int i = 1; i < timeSeries.length; i++) {
+            if (timeSeries[i] < timeSeries[i-1]) { //This is just to initiall set up the loop, now do something
 
-        return duration;
+            }
+        }
+        return totalDuration;
     }
 
     public static void main(String[] args) {
