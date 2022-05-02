@@ -2,9 +2,9 @@
 // 495. Teemo Attacking
 
 class TeemoAttacking {
-    public int[][] solution(int[] timeSeries, int duration) {
-        int[][] test = new int[][] {{1,2,3},{1,2,3}};
-        return test;
+    public int solution(int[] timeSeries, int duration) {
+
+        return duration;
     }
 
     public static void main(String[] args) {
