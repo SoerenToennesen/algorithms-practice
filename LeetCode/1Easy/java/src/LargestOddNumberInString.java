@@ -3,8 +3,12 @@
 
 class LargestOddNumberInString {
     public String solution(String num) {
-
-        return num;
+        for (int i = num.length() - 1; i >= 0; i--) {
+            if (Integer.parseInt(String.valueOf(num.charAt(i))) % 2 == 1) {
+                return num.substring(0, i+1);
+            }
+        }
+        return "";
     }
 
     public static void main(String[] args) {
