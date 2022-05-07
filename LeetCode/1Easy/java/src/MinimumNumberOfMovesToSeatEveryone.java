@@ -1,9 +1,17 @@
 
 // 2037. Minimum Number of Moves to Seat Everyone
 
+import java.util.Arrays;
+
 class MinimumNumberOfMovesToSeatEveryone {
     public int solution(int[] seats, int[] students) {
-        return -1;
+        Arrays.sort(seats);
+        Arrays.sort(students);
+        int totalMoves = 0;
+        for (int i = 0; i < seats.length; i++) {
+            totalMoves += Math.abs(seats[i] - students[i]);
+        }
+        return totalMoves;
     }
 
     public static void main(String[] args) {
