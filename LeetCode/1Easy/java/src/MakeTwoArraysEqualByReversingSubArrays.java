@@ -3,6 +3,7 @@
 
 class MakeTwoArraysEqualByReversingSubArrays {
     public boolean solution(int[] target, int[] arr) {
+        if (target.length <= 1) return true;
 
         return false;
     }
