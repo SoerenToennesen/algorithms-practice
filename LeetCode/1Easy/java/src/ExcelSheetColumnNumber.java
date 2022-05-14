@@ -3,8 +3,11 @@
 
 class ExcelSheetColumnNumber {
     public int solution(String columnTitle) {
-
-        return -1;
+        int ret = 0;
+        for (int i = 0; i < columnTitle.length() - 1; i++) {
+            ret += (((int) columnTitle.charAt(i)) - 64) * (26 * (columnTitle.length() - 1 - i));
+        }
+        return ret + (((int) columnTitle.charAt(columnTitle.length() - 1)) - 64);
     }
 
     public static void main(String[] args) {
