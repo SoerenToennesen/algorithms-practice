@@ -3,7 +3,8 @@
 
 class NimGame {
     public boolean solution(int n) {
-        return false;
+        if (n <= 3) return true;
+        return n % 3 == 1;
     }
 
     public static void main(String[] args) {
