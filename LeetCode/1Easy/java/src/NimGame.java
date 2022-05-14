@@ -4,7 +4,7 @@
 class NimGame {
     public boolean solution(int n) {
         if (n <= 3) return true;
-        return n % 4 == 0;
+        return !(n % 4 == 0);
     }
 
     public static void main(String[] args) {
