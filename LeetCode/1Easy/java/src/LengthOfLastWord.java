@@ -3,8 +3,17 @@
 
 class LengthOfLastWord {
     public int solution(String s) {
-
-        return -1;
+        int res = 0;
+        for (int i = s.length() - 1; i >= 0; i--) {
+            if (res == 0 && s.charAt(i) == ' ') {
+                continue;
+            } else if (s.charAt(i) == ' ') {
+                return res;
+            } else {
+                res++;
+            }
+        }
+        return res;
     }
 
     public static void main(String[] args) {
