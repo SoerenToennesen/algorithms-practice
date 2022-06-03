@@ -15,7 +15,11 @@ class ResultCountingSortOne {
 
     public static List<Integer> countingSort(List<Integer> arr) {
         // Write your code here
-        return arr;
+        List<Integer> list = new ArrayList<Integer>(Collections.nCopies(100, 0));
+        for (int i = 0; i < arr.size(); i++) {
+            list.set(arr.get(i), list.get(arr.get(i)) + 1);
+        }
+        return list;
     }
 
 }
@@ -23,7 +27,7 @@ class ResultCountingSortOne {
 public class CountingSortOne {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+        //BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
 
         int n = Integer.parseInt(bufferedReader.readLine().trim());
 
@@ -33,14 +37,14 @@ public class CountingSortOne {
 
         List<Integer> result = ResultCountingSortOne.countingSort(arr);
 
-        bufferedWriter.write(
+        /*bufferedWriter.write(
                 result.stream()
                         .map(Object::toString)
                         .collect(joining(" "))
                         + "\n"
-        );
+        );*/
 
         bufferedReader.close();
-        bufferedWriter.close();
+        //bufferedWriter.close();
     }
 }
