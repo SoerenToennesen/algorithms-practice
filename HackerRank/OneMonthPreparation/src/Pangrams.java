@@ -13,7 +13,16 @@ class ResultPangrams {
 
     public static String pangrams(String s) {
         // Write your code here
-
+        int twentySixSetBits = 67108863;
+        for (char c : s.toCharArray()) {
+            int ascii = (int) c;
+            boolean isLowerCase = Character.isLowerCase(c);
+            int setBit = (int) Math.pow(2, (isLowerCase ? ascii - 97 : ascii - 65));
+            int twentySixSetBitsTemp = ~(twentySixSetBits & setBit);
+            twentySixSetBits |= twentySixSetBitsTemp;
+            if (twentySixSetBits == 0) return "pengram";
+        }
+        return "not pangram";
     }
 
 }
@@ -21,16 +30,16 @@ class ResultPangrams {
 public class Pangrams {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+        //BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
 
         String s = bufferedReader.readLine();
 
         String result = ResultPangrams.pangrams(s);
 
-        bufferedWriter.write(result);
-        bufferedWriter.newLine();
+        //bufferedWriter.write(result);
+        //bufferedWriter.newLine();
 
         bufferedReader.close();
-        bufferedWriter.close();
+        //bufferedWriter.close();
     }
 }
