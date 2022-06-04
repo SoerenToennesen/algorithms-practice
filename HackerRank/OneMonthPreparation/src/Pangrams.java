@@ -13,14 +13,13 @@ class ResultPangrams {
 
     public static String pangrams(String s) {
         // Write your code here
-        int twentySixSetBits = 67108863;
+        int twentySixSetBits = 0;
         for (char c : s.toCharArray()) {
             int ascii = (int) c;
             boolean isLowerCase = Character.isLowerCase(c);
             int setBit = (int) Math.pow(2, (isLowerCase ? ascii - 97 : ascii - 65));
-            int twentySixSetBitsTemp = ~(twentySixSetBits & setBit);
-            twentySixSetBits |= twentySixSetBitsTemp;
-            if (twentySixSetBits == 0) return "pengram";
+            twentySixSetBits |= setBit;
+            if (twentySixSetBits == 67108863) return "pangram";
         }
         return "not pangram";
     }
