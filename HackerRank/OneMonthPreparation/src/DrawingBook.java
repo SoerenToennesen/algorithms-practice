@@ -15,8 +15,10 @@ class ResultDrawingBook {
 
     public static int pageCount(int n, int p) {
         // Write your code here
-
-        return n;
+        if (p == n) return 0;
+        boolean isEven = n % 2 == 0;
+        if (p > n / 2) return (n-p) / 2 + (isEven && (n-p) % 2 == 1 ? 1 : 0);
+        else return (p) / 2;
     }
 
 }
