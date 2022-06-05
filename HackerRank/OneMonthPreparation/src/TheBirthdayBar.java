@@ -19,6 +19,9 @@ class ResultTheBirthdayBar {
     public static int birthday(List<Integer> s, int d, int m) {
         // Write your code here
         int res = 0;
+        // An improvement would be to save the sum of the first sum,
+        // and the next sums will just be adding the new index and
+        // removing the first index from the previous.
         for (int i = 0; i < s.size() - m + 1; i++) {
             if (s.subList(i, i + m).stream().reduce(0, (a,b) -> a + b) == d) res++;
         }
