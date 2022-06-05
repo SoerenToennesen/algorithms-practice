@@ -21,9 +21,17 @@ class ResultMiniMaxSum {
     public static void miniMaxSum(List<Integer> arr) {
         // Write your code here
         Collections.sort(arr);
-        System.out.println(arr.subList(0,4).stream().mapToInt(Integer::intValue).sum()
+        long lowerSum = 0;
+        long upperSum = 0;
+        for (int i = 0; i < arr.size() - 1; i++) {
+            lowerSum += arr.get(i);
+        }
+        for (int i = 1; i < arr.size(); i++) {
+            upperSum += arr.get(i);
+        }
+        System.out.println(lowerSum
                 + " "
-                + arr.subList(1,5).stream().mapToInt(Integer::intValue).sum());
+                + upperSum);
     }
 
 }
