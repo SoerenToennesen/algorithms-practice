@@ -19,8 +19,8 @@ class ResultTheBirthdayBar {
     public static int birthday(List<Integer> s, int d, int m) {
         // Write your code here
         int res = 0;
-        for (int i = 0; i < s.size() - d + 1; i++) {
-            if (s.subList(i, i+d).stream().reduce(0, (a,b) -> a + b) == m) res++;
+        for (int i = 0; i < s.size() - m + 1; i++) {
+            if (s.subList(i, i + m).stream().reduce(0, (a,b) -> a + b) == d) res++;
         }
         return res;
     }
