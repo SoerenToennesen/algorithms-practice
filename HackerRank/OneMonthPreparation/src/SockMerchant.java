@@ -15,10 +15,17 @@ class ResultSockMerchant {
      *  2. INTEGER_ARRAY ar
      */
 
-    public static int sockMerchant(int n, List<Integer> ar) {
+    public static int sockMerchant(int n, List<Integer> arr) {
         // Write your code here
-
-        return n;
+        Collections.sort(arr);
+        int res = 0;
+        for (int i = 0; i < arr.size() - 1; i++) {
+            if (arr.get(i) == arr.get(i + 1)) {
+                res += 1;
+                i++;
+            }
+        }
+        return res;
     }
 
 }
