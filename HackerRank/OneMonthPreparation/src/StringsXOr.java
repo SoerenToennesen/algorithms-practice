@@ -13,6 +13,7 @@ public class StringsXOr {
         String str1 = reader.next();
         String str2 = reader.next();
         reader.close();
+        /*
         int length = Integer.max(str1.length(), str2.length());
         int str1Int = Integer.parseInt(str1);
         int str2Int = Integer.parseInt(str2);
@@ -21,5 +22,12 @@ public class StringsXOr {
         //String binaryFormat = "%" + String.format("%d", length) + "s";
         //String result = String.format(binaryFormat, Integer.toBinaryString(xorResult)).replace(' ', '0');
         //System.out.println(result);
+        */
+        String res = "";
+        for (int i = 0; i < str1.length(); i++) {
+            if (str1.charAt(i) == str2.charAt(i)) res += "0";
+            else res += "1";
+        }
+        System.out.println(res);
     }
 }
