@@ -17,7 +17,13 @@ class ResultMaxMin {
 
     public static int maxMin(int k, List<Integer> arr) {
         // Write your code here
-        return k;
+        Collections.sort(arr);
+        int res = Integer.MAX_VALUE;
+        for (int i = 0; i < arr.size() - 1; i++) {
+            int tempMin = Math.max(arr.get(i), arr.get(i+1)) - Math.min(arr.get(i), arr.get(i+1));
+            if (tempMin < res) res = tempMin;
+        }
+        return res;
     }
 
 }
