@@ -15,14 +15,13 @@ class ResultSherlockAndArray {
 
     public static String balancedSums(List<Integer> arr) {
         // Write your code here
-        if (arr.size() < 3) return "NO";
         int leftSum = 0;
         int rightSum = 0;
         int leftIdx = 0;
         int rightIdx = arr.size() - 1;
         while (true) {
-            if (leftIdx == rightIdx - 2) break;
-            if (leftSum <= rightSum) {
+            if (rightIdx == leftIdx) break;
+            if (leftSum < rightSum || (leftSum == rightSum && arr.get(leftIdx) <= arr.get(rightIdx))) {
                 leftSum += arr.get(leftIdx);
                 leftIdx++;
             } else {
@@ -38,7 +37,7 @@ class ResultSherlockAndArray {
 public class SherlockAndArray {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+        //BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
 
         int T = Integer.parseInt(bufferedReader.readLine().trim());
 
@@ -52,14 +51,14 @@ public class SherlockAndArray {
 
                 String result = ResultSherlockAndArray.balancedSums(arr);
 
-                bufferedWriter.write(result);
-                bufferedWriter.newLine();
+                //bufferedWriter.write(result);
+                //bufferedWriter.newLine();
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
         });
 
         bufferedReader.close();
-        bufferedWriter.close();
+        //bufferedWriter.close();
     }
 }
