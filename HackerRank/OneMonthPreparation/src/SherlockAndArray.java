@@ -15,7 +15,22 @@ class ResultSherlockAndArray {
 
     public static String balancedSums(List<Integer> arr) {
         // Write your code here
-        return "";
+        if (arr.size() < 3) return "NO";
+        int leftSum = 0;
+        int rightSum = 0;
+        int leftIdx = 0;
+        int rightIdx = arr.size() - 1;
+        while (true) {
+            if (leftIdx == rightIdx - 2) break;
+            if (leftSum <= rightSum) {
+                leftSum += arr.get(leftIdx);
+                leftIdx++;
+            } else {
+                rightSum += arr.get(rightIdx);
+                rightIdx--;
+            }
+        }
+        return leftSum == rightSum ? "YES" : "NO";
     }
 
 }
