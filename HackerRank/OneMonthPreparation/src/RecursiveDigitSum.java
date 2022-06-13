@@ -15,7 +15,21 @@ class ResultRecursiveDigitSum {
 
     public static int superDigit(String n, int k) {
         // Write your code here
-        return k;
+        long tempResult = 0;
+        for (char c : n.toCharArray()) {
+            tempResult += c - '0';
+        }
+        tempResult *= k;
+        String numString = String.valueOf(tempResult);
+        tempResult = 0;
+        while (numString.length() > 1) {
+            for (char c : numString.toCharArray()) {
+                tempResult += c - '0';
+            }
+            numString = String.valueOf(tempResult);
+            tempResult = 0;
+        }
+        return Integer.parseInt(numString);
     }
 
 }
@@ -23,7 +37,7 @@ class ResultRecursiveDigitSum {
 public class RecursiveDigitSum {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+        //BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
 
         String[] firstMultipleInput = bufferedReader.readLine().replaceAll("\\s+$", "").split(" ");
 
@@ -33,10 +47,10 @@ public class RecursiveDigitSum {
 
         int result = ResultRecursiveDigitSum.superDigit(n, k);
 
-        bufferedWriter.write(String.valueOf(result));
-        bufferedWriter.newLine();
+        //bufferedWriter.write(String.valueOf(result));
+        //bufferedWriter.newLine();
 
         bufferedReader.close();
-        bufferedWriter.close();
+        //bufferedWriter.close();
     }
 }
