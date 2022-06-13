@@ -13,7 +13,12 @@ class ResultSumXOr {
 
     public static long sumXor(long n) {
         // Write your code here
-        return -1;
+        long res = 0;
+        for (long i = 0; i <= n; i++) {
+            long temp = n ^ i;
+            if (n + i == temp) res++;
+        }
+        return res;
     }
 
 }
