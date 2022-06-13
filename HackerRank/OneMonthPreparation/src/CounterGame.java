@@ -13,7 +13,16 @@ class ResultCounterGame {
 
     public static String counterGame(long n) {
         // Write your code here
-        return "";
+        String currentWinner = "Richard";
+        while (n > 1) {
+            currentWinner = currentWinner == "Louise" ? "Richard" : "Louise";
+            if ((n & (n - 1)) == 0) {
+                n /= 2;
+            } else {
+                n = (long) Math.pow(2, Long.SIZE - Long.numberOfLeadingZeros(n));
+            }
+        }
+        return currentWinner;
     }
 
 }
