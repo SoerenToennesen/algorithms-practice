@@ -17,7 +17,36 @@ class ResultBomberMan {
 
     public static List<String> bomberMan(int n, List<String> grid) {
         // Write your code here
+        List<String> timer = new ArrayList<>(grid);
+        for (int i = 0; i < grid.size(); i++) {
+            int j = 0;
+            for (char c : grid.get(i).toCharArray()) {
+                if (c == 'o') {
+                    timer.set(i, grid.get(i).substring(0, j) + "3" + grid.get(i).substring(j+1));
+                } else {
+                    timer.set(i, grid.get(i).substring(0, j) + "0" + grid.get(i).substring(j+1));
+                }
+                j++;
+            }
+        }
+        for (int k = 1; k < n; k++) {
+            for (int i = 0; i < grid.size(); i++) {
+                for (int j = 0; j < grid.get(i).length(); j++) {
+                    if (grid.get(i).charAt(j) == '.') {
+                        grid.set(i, grid.get(i).substring(0, j) + "o" + grid.get(i).substring(j+1));
+                        timer.set(i, grid.get(i).substring(0, j) + "3" + grid.get(i).substring(j+1));
+                    } else {
+                        int nextTime = Integer.parseInt(String.valueOf(timer.get(i).charAt(j))) - 1;
+                        timer.set(i, grid.get(i).substring(0, j) + nextTime + grid.get(i).substring(j+1));
+                        if (nextTime == 0) {
+                            grid.set(i, grid.get(i).substring(0, j) + "." + grid.get(i).substring(j+1));
+                        }
+                    }
+                }
+            }
+        }
 
+        return grid;
     }
 
 }
