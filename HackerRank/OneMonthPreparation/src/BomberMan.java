@@ -21,10 +21,10 @@ class ResultBomberMan {
         for (int i = 0; i < grid.size(); i++) {
             int j = 0;
             for (char c : grid.get(i).toCharArray()) {
-                if (c == 'o') {
-                    timer.set(i, grid.get(i).substring(0, j) + "3" + grid.get(i).substring(j+1));
+                if (c == 'O') {
+                    timer.set(i, timer.get(i).substring(0, j) + "3" + timer.get(i).substring(j+1));
                 } else {
-                    timer.set(i, grid.get(i).substring(0, j) + "0" + grid.get(i).substring(j+1));
+                    timer.set(i, timer.get(i).substring(0, j) + "0" + timer.get(i).substring(j+1));
                 }
                 j++;
             }
@@ -33,11 +33,13 @@ class ResultBomberMan {
             for (int i = 0; i < grid.size(); i++) {
                 for (int j = 0; j < grid.get(i).length(); j++) {
                     if (grid.get(i).charAt(j) == '.') {
-                        grid.set(i, grid.get(i).substring(0, j) + "o" + grid.get(i).substring(j+1));
-                        timer.set(i, grid.get(i).substring(0, j) + "3" + grid.get(i).substring(j+1));
-                    } else {
+                        grid.set(i, grid.get(i).substring(0, j) + "O" + grid.get(i).substring(j+1));
+                        timer.set(i, timer.get(i).substring(0, j) + "3" + timer.get(i).substring(j+1));
+                    } else { //TODO: Insert logic, which also clears neighbouring bombs.
+                             // Also, if any bombs are planted, make sure to not do anything
+                             // except decrement timer ("bomberman stands back and observes").
                         int nextTime = Integer.parseInt(String.valueOf(timer.get(i).charAt(j))) - 1;
-                        timer.set(i, grid.get(i).substring(0, j) + nextTime + grid.get(i).substring(j+1));
+                        timer.set(i, timer.get(i).substring(0, j) + nextTime + timer.get(i).substring(j+1));
                         if (nextTime == 0) {
                             grid.set(i, grid.get(i).substring(0, j) + "." + grid.get(i).substring(j+1));
                         }
@@ -45,10 +47,8 @@ class ResultBomberMan {
                 }
             }
         }
-
         return grid;
     }
-
 }
 
 public class BomberMan {
