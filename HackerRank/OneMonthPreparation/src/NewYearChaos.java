@@ -23,7 +23,7 @@ class ResultNewYearChaos {
                 boolean twoAway = i > 1 && q.get(i - 2) == i + 1;
                 if (twoAway) seen.add(q.get(i - 1));
                 seen.add(i + 1);
-                res += q.get(i - 1) == i + 1 ? 1 : 2;
+                res += !twoAway ? 1 : 2;
             }
         }
         System.out.println(res);
