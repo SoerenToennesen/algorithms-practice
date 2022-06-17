@@ -14,12 +14,15 @@ class ResultNewYearChaos {
 
     public static void minimumBribes(List<Integer> q) {
         // Write your code here
+        // TODO: Add the "Too chaotic" result
         int res = 0;
         List<Integer> seen = new ArrayList<>();
         for (int i = q.size() - 1; i > 0; i--) {
             if (q.get(i) != i + 1 && !seen.contains(q.get(i))) {
                 seen.add(q.get(i));
-                seen.add(i+1);
+                boolean twoAway = i > 1 && q.get(i - 2) == i + 1;
+                if (twoAway) seen.add(q.get(i - 1));
+                seen.add(i + 1);
                 res += q.get(i - 1) == i + 1 ? 1 : 2;
             }
         }
