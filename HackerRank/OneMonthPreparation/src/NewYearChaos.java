@@ -16,7 +16,7 @@ class ResultNewYearChaos {
         // Write your code here
         int res = 0;
         List<Integer> seen = new ArrayList<>();
-        for (int i = q.size() - 1; i > 0; i++) {
+        for (int i = q.size() - 1; i > 0; i--) {
             if (q.get(i) != i + 1 && !seen.contains(q.get(i))) {
                 seen.add(q.get(i));
                 seen.add(i+1);
