@@ -23,7 +23,7 @@ class ResultNewYearChaos {
                 res += q.get(i - 1) == i + 1 ? 1 : 2;
             }
         }
-        System.out.println(-1);
+        System.out.println(res);
     }
 
 }
