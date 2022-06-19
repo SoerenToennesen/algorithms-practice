@@ -13,7 +13,21 @@ class ResultSherlockAndValidString {
 
     public static String isValid(String s) {
         // Write your code here
-        return s;
+        int res = 0;
+        for (char c : s.toCharArray()) {
+            res ^= c;
+        }
+        if (res == 0) return "YES";
+        int newRes = 0;
+        boolean deleted = false;
+        for (char c : s.toCharArray()) {
+            if (!deleted && c == res) {
+                deleted = true;
+            } else {
+                newRes ^= c;
+            }
+        }
+        return newRes == 0 ? "YES" : "NO";
     }
 
 }
