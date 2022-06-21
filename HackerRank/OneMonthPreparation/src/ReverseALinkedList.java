@@ -73,9 +73,20 @@ public class ReverseALinkedList {
 
         public static SinglyLinkedListNode reverse(SinglyLinkedListNode llist) {
             // Write your code here
-            return new SinglyLinkedListNode(0);
+            SinglyLinkedListNode prev = new SinglyLinkedListNode(-1);
+            SinglyLinkedListNode current = new SinglyLinkedListNode(llist.data);
+            SinglyLinkedListNode next = new SinglyLinkedListNode(-1);
+            while (llist.next != null) {
+                next = current.next;
+                current.next = prev;
+                prev = current;
+                current = next;
+                llist = llist.next;
+            }
+            return current;
         }
 
     }
 
     private static final Scanner scanner = new Scanner(System.in);
+}
