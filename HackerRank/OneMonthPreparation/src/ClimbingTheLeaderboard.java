@@ -26,11 +26,11 @@ class ResultClimbingTheLeaderboard {
             } else {
                 while (mid > 0) {
                     if (ranked.get(mid - 1) == target) mid--;
-                    else return mid;
+                    else return mid + 1; // + 1 because we convert from index to placement, which is 1-indexed
                 }
             }
         }
-        return mid;
+        return mid + 1;
     }
 
     public static List<Integer> climbingLeaderboard(List<Integer> ranked, List<Integer> player) {
