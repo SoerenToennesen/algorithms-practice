@@ -17,7 +17,24 @@ class ResultIceCreamParlor {
 
     public static List<Integer> icecreamParlor(int m, List<Integer> arr) {
         // Write your code here
-        return arr;
+        //Collections.sort(arr);
+        int pointer1 = 0;
+        int pointer2 = arr.size() - 1;
+
+        List<Integer> res = new ArrayList<>();
+        for (int i = 0; i < arr.size(); i++) {
+            if (pointer1 == pointer2) break;
+            int tempSum = arr.get(pointer1) + arr.get(pointer2);
+            if (tempSum == m) {
+                res.add(pointer1 + 1);
+                res.add(pointer2 + 1);
+                break;
+            }
+            if (tempSum < m) pointer1++;
+            else pointer2--;
+        }
+
+        return res;
     }
 
 }
