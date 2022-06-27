@@ -17,17 +17,24 @@ class ResultIceCreamParlor {
 
     public static List<Integer> icecreamParlor(int m, List<Integer> arr) {
         // Write your code here
-        //Collections.sort(arr);
+        List<int[]> sortedList = new ArrayList<>();
+
+        for (int i = 0; i < arr.size(); i++) {
+            int[] tuple = {arr.get(i), i};
+            sortedList.add(tuple);
+        }
+        Collections.sort(sortedList, Comparator.comparingInt(o -> o[0]));
+
         int pointer1 = 0;
         int pointer2 = arr.size() - 1;
 
         List<Integer> res = new ArrayList<>();
-        for (int i = 0; i < arr.size(); i++) {
+        for (int i = 0; i < sortedList.size(); i++) {
             if (pointer1 == pointer2) break;
-            int tempSum = arr.get(pointer1) + arr.get(pointer2);
+            int tempSum = sortedList.get(pointer1)[0] + sortedList.get(pointer2)[0];
             if (tempSum == m) {
-                res.add(pointer1 + 1);
-                res.add(pointer2 + 1);
+                res.add(sortedList.get(pointer1)[1] + 1);
+                res.add(sortedList.get(pointer2)[1] + 1);
                 break;
             }
             if (tempSum < m) pointer1++;
