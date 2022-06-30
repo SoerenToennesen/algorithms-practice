@@ -36,15 +36,13 @@ class ResultBalancedBrackets {
 
     public static String isBalanced(String s) {
         // Write your code here
-        int bracket1 = 0; int bracket2 = 0; int bracket3 = 0;
         List<Character> bracketStack = new ArrayList<>();
-        for (int i = 1; i < s.length(); i++) {
-            if (!isValidBracket(s.charAt(i))) {
-                return "NO";
-            }
+        for (int i = 0; i < s.length(); i++) {
+            if (!isValidBracket(s.charAt(i))) continue;
             if (isClosingBracket(s.charAt(i))) {
                 if (bracketStack.isEmpty()) return "NO";
                 if (!isMatchingBracket(bracketStack.get(bracketStack.size() - 1), s.charAt(i))) return "NO";
+                else bracketStack.remove(bracketStack.size() - 1);
             } else {
                 bracketStack.add(s.charAt(i));
             }
@@ -57,7 +55,7 @@ class ResultBalancedBrackets {
 public class BalancedBrackets {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+        //BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
 
         int t = Integer.parseInt(bufferedReader.readLine().trim());
 
@@ -67,14 +65,14 @@ public class BalancedBrackets {
 
                 String result = ResultBalancedBrackets.isBalanced(s);
 
-                bufferedWriter.write(result);
-                bufferedWriter.newLine();
+                //bufferedWriter.write(result);
+                //bufferedWriter.newLine();
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
         });
 
         bufferedReader.close();
-        bufferedWriter.close();
+        //bufferedWriter.close();
     }
 }
