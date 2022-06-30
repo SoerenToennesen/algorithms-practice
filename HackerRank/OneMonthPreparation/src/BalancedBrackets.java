@@ -1,4 +1,6 @@
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.*;
 import static java.util.stream.Collectors.joining;
 
@@ -11,9 +13,43 @@ class ResultBalancedBrackets {
      * The function accepts STRING s as parameter.
      */
 
+    public static boolean isClosingBracket(char bracket) {
+        if (bracket == '(' || bracket == '[' || bracket == '{') return false;
+        else return true;
+    }
+
+    public static boolean isValidBracket(char bracket) {
+        if (bracket == '(' || bracket == '[' || bracket == '{'
+        || bracket == ')' || bracket == ']' || bracket == '}') return true;
+        else return false;
+    }
+
+    public static boolean isMatchingBracket(char bracket1, char bracket2) {
+        if (bracket1 == '(') {
+            return bracket2 == ')';
+        } else if (bracket1 == '[') {
+            return bracket2 == ']';
+        } else {
+            return bracket2 == '}';
+        }
+    }
+
     public static String isBalanced(String s) {
         // Write your code here
-        return s;
+        int bracket1 = 0; int bracket2 = 0; int bracket3 = 0;
+        List<Character> bracketStack = new ArrayList<>();
+        for (int i = 1; i < s.length(); i++) {
+            if (!isValidBracket(s.charAt(i))) {
+                return "NO";
+            }
+            if (isClosingBracket(s.charAt(i))) {
+                if (bracketStack.isEmpty()) return "NO";
+                if (!isMatchingBracket(bracketStack.get(bracketStack.size() - 1), s.charAt(i))) return "NO";
+            } else {
+                bracketStack.add(s.charAt(i));
+            }
+        }
+        return "YES";
     }
 
 }
