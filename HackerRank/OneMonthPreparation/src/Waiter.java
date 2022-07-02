@@ -15,9 +15,46 @@ class ResultWaiter {
      *  2. INTEGER q
      */
 
+    private static List<Integer> relevantPrimes(int n) {
+        int x, y, flg;
+        List<Integer> primes = new ArrayList<>();
+        for (x = 1; x <= n; x++) {
+            if (x == 1 || x == 0) continue;
+            flg = 1;
+            for (y = 2; y <= x / 2; ++y) {
+                if (x % y == 0) {
+                    flg = 0;
+                    break;
+                }
+            }
+            if (flg == 1) primes.add(x);
+        }
+        return primes;
+    }
+
     public static List<Integer> waiter(List<Integer> number, int q) {
         // Write your code here
-        return number;
+        List<Integer> primes = relevantPrimes(Collections.max(number));
+        List<Integer> answers = new ArrayList<>();
+        List<Integer> answersTemp = new ArrayList<>();
+        for (int i = 0; i < q; i++) {
+            int j = 0;
+            while (j < number.size()) {
+                if (primes.contains(number.get(j))) {
+                    answersTemp.add(number.get(j));
+                    number.remove(j);
+                }
+                j++;
+            }
+            for (int k = answersTemp.size() - 1; k >= 0; k--) {
+                answers.add(answersTemp.get(k));
+            }
+            answersTemp.clear();
+        }
+        for (int i = number.size() - 1; i >= 0; i++) {
+            answers.add(number.get(i));
+        }
+        return answers;
     }
 
 }
