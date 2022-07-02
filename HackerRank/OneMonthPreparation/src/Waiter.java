@@ -36,23 +36,18 @@ class ResultWaiter {
         // Write your code here
         List<Integer> primes = relevantPrimes(Collections.max(number));
         List<Integer> answers = new ArrayList<>();
-        List<Integer> answersTemp = new ArrayList<>();
         for (int i = 0; i < q; i++) {
             int j = 0;
             while (j < number.size()) {
                 if (primes.contains(number.get(j))) {
-                    answersTemp.add(number.get(j));
+                    answers.add(number.get(j));
                     number.remove(j);
                 }
                 j++;
             }
-            for (int k = answersTemp.size() - 1; k >= 0; k--) {
-                answers.add(answersTemp.get(k));
-            }
-            answersTemp.clear();
         }
-        for (int i = number.size() - 1; i >= 0; i++) {
-            answers.add(number.get(i));
+        for (int i = number.size() - 1; i >= 0; i--) {
+            answers.add(0, number.get(i));
         }
         return answers;
     }
