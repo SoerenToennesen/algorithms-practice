@@ -15,6 +15,24 @@ class ResultMaximumSubarray {
 
     public static List<Integer> maxSubarray(List<Integer> arr) {
         // Write your code here
+        int[] maximum = {0, 0};
+        int maxSum = 0;
+        int[] current = {0, 0};
+        int currentSum = 0;
+        for (int i = 0; i < arr.size(); i++) {
+            currentSum += arr.get(i);
+            current[1] = i;
+            if (currentSum < 0) {
+                if (currentSum - arr.get(i) > maxSum) {
+                    maxSum = currentSum;
+                    maximum[0] = current[0];
+                    maximum[1] = current[1] - 1;
+                }
+                currentSum = 0;
+                current[0] = i + 1;
+            }
+        }
+
         return arr;
     }
 
