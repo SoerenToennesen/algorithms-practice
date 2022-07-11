@@ -13,7 +13,7 @@ class ResultMaximumSubarray {
      * The function accepts INTEGER_ARRAY arr as parameter.
      */
 
-    // TODO: Make this right...
+    //TODO: Handle negatives
     public static List<Integer> maxSubarray(List<Integer> arr) {
         // Write your code here
         int[] maximum = {0, 0};
@@ -33,11 +33,22 @@ class ResultMaximumSubarray {
                 current[0] = i + 1;
             }
         }
+        if (currentSum - arr.get(arr.size() - 1) > maxSum) {
+            maxSum = currentSum - arr.get(arr.size() - 1);
+            maximum[0] = current[0];
+            maximum[1] = current[1] - 1;
+        }
         if (currentSum > maxSum) {
+            maxSum = currentSum;
             maximum[0] = current[0];
             maximum[1] = current[1];
         }
-        return arr.subList(maximum[0], maximum[1]);
+        List<Integer> subList = arr.subList(maximum[0], maximum[1] + 1);
+        int secondSum = 0;
+        for (int i = 0; i < subList.size(); i++) {
+            if (subList.get(i) > 0) secondSum += subList.get(i);
+        }
+        return List.of(maxSum, secondSum);
     }
 
 }
