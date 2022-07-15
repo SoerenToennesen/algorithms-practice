@@ -17,6 +17,16 @@ class ResultJesseAndCookies {
 
     public static int cookies(int k, List<Integer> A) {
         // Write your code here
+        if (A.isEmpty()) return -1;
+        Collections.sort(A);
+        int operations = 0;
+        while (A.get(0) < k && A.size() > 1) {
+            A.set(0, A.get(0) + A.get(1) * 2);
+            A.remove(1);
+            Collections.sort(A);
+            operations++;
+        }
+        if (A.get(0) > k) return operations;
         return -1;
     }
 
