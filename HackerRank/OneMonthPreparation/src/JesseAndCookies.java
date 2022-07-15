@@ -17,6 +17,7 @@ class ResultJesseAndCookies {
 
     public static int cookies(int k, List<Integer> A) {
         // Write your code here
+        //TODO: Reduce time execution by not sorting each time but using a linked list to insert in O(1) time
         if (A.isEmpty()) return -1;
         Collections.sort(A);
         int operations = 0;
