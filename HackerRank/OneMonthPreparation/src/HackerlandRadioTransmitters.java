@@ -17,7 +17,23 @@ class ResultHackerlandRadioTransmitters {
 
     public static int hackerlandRadioTransmitters(List<Integer> x, int k) {
         // Write your code here
-        return -1;
+        Collections.sort(x);
+        int res = 0;
+        int currAntenna = x.get(0);
+        for (int i = 0; i < x.size(); i++) {
+            if (currAntenna + k < x.get(i)) {
+                currAntenna = x.get(i-1);
+                for (int j = i; j < x.size(); j++) {
+                    if (currAntenna + k < x.get(j)) {
+                        i = j;
+                        break;
+                    }
+                }
+                res++;
+                currAntenna = x.get(i);
+            }
+        }
+        return res + 1;
     }
 
 }
