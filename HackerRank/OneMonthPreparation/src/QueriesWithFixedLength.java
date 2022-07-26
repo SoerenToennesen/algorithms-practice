@@ -17,7 +17,17 @@ class ResultQueriesWithFixedLength {
 
     public static List<Integer> solve(List<Integer> arr, List<Integer> queries) {
         // Write your code here
-        return arr;
+        List<Integer> res = new ArrayList<>();
+        List<Integer> temp = new ArrayList<>();
+        for (int i = 0; i < queries.size(); i++) {
+            for (int j = 0; j < arr.size(); j++) {
+                temp.add(Collections.max(arr.subList(j, j + queries.get(i)))); //TODO: Make sure this is robust against overflows
+                j += queries.get(i) - 1;
+            }
+            res.add(Collections.min(temp));
+            temp = new ArrayList<>();
+        }
+        return res;
     }
 
 }
