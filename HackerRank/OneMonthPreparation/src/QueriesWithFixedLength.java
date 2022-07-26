@@ -21,7 +21,7 @@ class ResultQueriesWithFixedLength {
         List<Integer> temp = new ArrayList<>();
         for (int i = 0; i < queries.size(); i++) {
             for (int j = 0; j < arr.size(); j++) {
-                temp.add(Collections.max(arr.subList(j, j + queries.get(i)))); //TODO: Make sure this is robust against overflows
+                temp.add(Collections.max(arr.subList(j, Math.min(j + queries.get(i), arr.size() - 1))));
                 j += queries.get(i) - 1;
             }
             res.add(Collections.min(temp));
