@@ -17,7 +17,18 @@ class ResultArrayManipulation {
 
     public static long arrayManipulation(int n, List<List<Integer>> queries) {
         // Write your code here
-        return n;
+        long max = 0;
+        int[] resArray = new int[n];
+        for (int i = 0; i < queries.size(); i++) {
+            int diff = queries.get(i).get(1) - queries.get(i).get(0);
+            int toadd = queries.get(i).get(2);
+            for (int j = queries.get(i).get(0); j < queries.get(i).get(0) + diff; j++) {
+                resArray[j] += toadd;
+                if (resArray[j] > max) max = resArray[j];
+            }
+
+        }
+        return max;
     }
 
 }
