@@ -22,11 +22,10 @@ class ResultArrayManipulation {
         for (int i = 0; i < queries.size(); i++) {
             int diff = queries.get(i).get(1) - queries.get(i).get(0);
             int toadd = queries.get(i).get(2);
-            for (int j = queries.get(i).get(0); j < queries.get(i).get(0) + diff; j++) {
+            for (int j = queries.get(i).get(0) - 1; j <= queries.get(i).get(0) - 1 + diff; j++) {
                 resArray[j] += toadd;
                 if (resArray[j] > max) max = resArray[j];
             }
-
         }
         return max;
     }
