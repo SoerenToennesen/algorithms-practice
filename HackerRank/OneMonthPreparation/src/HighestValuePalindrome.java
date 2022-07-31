@@ -19,7 +19,7 @@ class ResultHighestValuePalindrome {
         char[] charArray = s.toCharArray();
 
         // 1. Convert to palindrome
-        for (int i = 0; i < (int) Math.ceil(n / 2.0); i++) {
+        for (int i = 0; i < n/2; i++) {
             if (charArray[i] == charArray[n-1-i]) continue;
             boolean isLower = charArray[i] > charArray[n-1-i];
             if (isLower) {
@@ -32,8 +32,8 @@ class ResultHighestValuePalindrome {
         }
 
         // 2. Make highest possible palindrome
-        if (k % 2 == 1) {
-            charArray[(int) Math.ceil(n / 2.0)] = '9';
+        if (n % 2 == 1) {
+            charArray[n / 2] = '9';
             k--;
         }
         int i = 0; int j = n - 1;
@@ -48,7 +48,11 @@ class ResultHighestValuePalindrome {
             j--;
         }
 
-        return charArray.toString();
+        String res = "";
+        for (char c : charArray) {
+            res += c;
+        }
+        return res;
     }
 
 }
