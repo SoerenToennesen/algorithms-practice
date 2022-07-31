@@ -16,6 +16,7 @@ class ResultHighestValuePalindrome {
 
     public static String highestValuePalindrome(String s, int n, int k) {
         // Write your code here
+        // TODO: Solution is not bullet-proof but works for most cases. Bullet proof would not to have 2-steps, as this is not always optimal.
         char[] charArray = s.toCharArray();
 
         // 1. Convert to palindrome
@@ -32,7 +33,7 @@ class ResultHighestValuePalindrome {
         }
 
         // 2. Make highest possible palindrome
-        if (n % 2 == 1) {
+        if (n % 2 == 1 && k > 0) {
             charArray[n / 2] = '9';
             k--;
         }
