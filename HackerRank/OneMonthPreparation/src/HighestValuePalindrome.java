@@ -16,7 +16,39 @@ class ResultHighestValuePalindrome {
 
     public static String highestValuePalindrome(String s, int n, int k) {
         // Write your code here
-        return "";
+        char[] charArray = s.toCharArray();
+
+        // 1. Convert to palindrome
+        for (int i = 0; i < (int) Math.ceil(n / 2.0); i++) {
+            if (charArray[i] == charArray[n-1-i]) continue;
+            boolean isLower = charArray[i] > charArray[n-1-i];
+            if (isLower) {
+                charArray[n-1-i] = charArray[i];
+            } else {
+                charArray[i] = charArray[n-1-i];
+            }
+            k--;
+            if (k < 0) return "-1";
+        }
+
+        // 2. Make highest possible palindrome
+        if (k % 2 == 1) {
+            charArray[(int) Math.ceil(n / 2.0)] = '9';
+            k--;
+        }
+        int i = 0; int j = n - 1;
+        while (k > 0) {
+            if (i >= j) break;
+            if (charArray[i] != '9') {
+                charArray[i] = '9';
+                charArray[j] = '9';
+                k -= 2;
+            }
+            i++;
+            j--;
+        }
+
+        return charArray.toString();
     }
 
 }
