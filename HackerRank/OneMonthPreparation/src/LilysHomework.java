@@ -15,7 +15,19 @@ class ResultLilysHomework {
 
     public static int lilysHomework(List<Integer> arr) {
         // Write your code here
-        return -1;
+        int res = 0;
+        int i = 0;
+        List<Integer> sortedArr = arr.stream().sorted().collect(toList());
+        while (!arr.equals(sortedArr)) {
+            if (!Objects.equals(sortedArr.get(i), arr.get(i))) {
+                int toSwitch = arr.indexOf(sortedArr.get(i));
+                arr.set(toSwitch, arr.get(i));
+                arr.set(i, sortedArr.get(i));
+                res++;
+            }
+            i++;
+        }
+        return res;
     }
 
 }
