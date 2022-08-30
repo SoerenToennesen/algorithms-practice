@@ -1,14 +1,10 @@
 import java.io.*;
-import java.math.*;
-import java.security.*;
-import java.text.*;
 import java.util.*;
-import java.util.concurrent.*;
-import java.util.function.*;
-import java.util.regex.*;
 import java.util.stream.*;
 import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
+
+
 
 class Result {
 
@@ -18,10 +14,47 @@ class Result {
      * The function accepts STRING_ARRAY words as parameter.
      */
 
+
+    static class Node<T> {
+        private T data;
+        private Node<T> parent;
+        private Set<Node<T>> children;
+
+        public void addChild(Node next) {
+            this.children.add(next);
+        }
+    }
+
+
     public static void noPrefix(List<String> words) {
         // Write your code here
+        Collections.sort(words, (str1, str2) -> Integer.compare(str1.length(), str2.length()));
+        Node root = new Node();
+        root.parent = null;
+        root.data = null;
+
         String tested = "";
-        System.out.println("BAD SET\n" + tested);
+        for (String word : words) {
+            Node current = root;
+            boolean isSame = true;
+            for (Character c : word.toCharArray()) {
+                for (Node child : current.children) {
+                    if (child.data == c) continue;
+                }
+
+                Node currentTemp = new Node();
+                currentTemp.parent = current;
+                currentTemp.data = c;
+                current.addChild(currentTemp);
+                current = currentTemp;
+            }
+            if (current.children != null) {
+                System.out.println("BAD SET\n" + tested);
+                return;
+            }
+            tested = word;
+        }
+        System.out.println("GOOD SET");
     }
 
 }
