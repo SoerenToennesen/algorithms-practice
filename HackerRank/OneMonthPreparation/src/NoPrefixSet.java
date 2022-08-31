@@ -6,7 +6,7 @@ import static java.util.stream.Collectors.toList;
 
 
 
-class Result {
+class ResultNoPrefixSet {
 
     /*
      * Complete the 'noPrefix' function below.
@@ -77,7 +77,7 @@ public class NoPrefixSet {
                 })
                 .collect(toList());
 
-        Result.noPrefix(words);
+        ResultCastleOnTheGrid.noPrefix(words);
 
         bufferedReader.close();
     }
