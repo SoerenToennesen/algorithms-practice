@@ -20,6 +20,7 @@ class ResultCastleOnTheGrid {
 
     public static int minimumMoves(List<String> grid, int startX, int startY, int goalX, int goalY) {
         // Write your code here
+        // TODO: Idea is to make a BFS, where everytime we change direction than the previous, we increase our count.
         return -1;
     }
 
