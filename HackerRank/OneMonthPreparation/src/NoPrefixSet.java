@@ -15,10 +15,10 @@ class Result {
      */
 
 
-    static class Node<T> {
-        private T data;
-        private Node<T> parent;
-        private Set<Node<T>> children;
+    static class Node {
+        private Character data;
+        private Node parent;
+        private Set<Node> children;
 
         public void addChild(Node next) {
             this.children.add(next);
@@ -32,16 +32,19 @@ class Result {
         Node root = new Node();
         root.parent = null;
         root.data = null;
-
         String tested = "";
         for (String word : words) {
             Node current = root;
-            boolean isSame = true;
             for (Character c : word.toCharArray()) {
+                boolean existing = false;
                 for (Node child : current.children) {
-                    if (child.data == c) continue;
+                    if (child.data == c) {
+                        current = child;
+                        existing = true;
+                        break;
+                    }
                 }
-
+                if (existing) continue;
                 Node currentTemp = new Node();
                 currentTemp.parent = current;
                 currentTemp.data = c;
