@@ -17,10 +17,22 @@ class ResultCastleOnTheGrid {
      *  4. INTEGER goalX
      *  5. INTEGER goalY
      */
+    private int bfs(List<String> grid, int posX, int posY, int goalX, int goalY, int moves, int direction) {
+        //TODO: Need to keep track of visited, to not backtrack, and make sure when we return, we have to try all other moves, and not return it as the final value. Perhaps keep a queue to do this (if queue is not empty, go test next in queue).
+        if (posX == goalX && posY == goalY) {
+            return moves;
+        }
+        for (int i = 0; i < 4; i++) {
+            return bfs(grid, i % 2 == 0 ? posX + 1 : posX, i % 2 != 0 ? posY + 1 : posY, goalX, goalY, i == direction ? moves : moves + 1, i);
+        }
+        return -1;
+    }
 
     public static int minimumMoves(List<String> grid, int startX, int startY, int goalX, int goalY) {
         // Write your code here
         // TODO: Idea is to make a BFS, where everytime we change direction than the previous, we increase our count.
+        int moves = 0;
+
         return -1;
     }
 
