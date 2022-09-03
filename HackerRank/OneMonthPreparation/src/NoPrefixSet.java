@@ -77,7 +77,7 @@ public class NoPrefixSet {
                 })
                 .collect(toList());
 
-        ResultCastleOnTheGrid.noPrefix(words);
+        ResultNoPrefixSet.noPrefix(words);
 
         bufferedReader.close();
     }
