@@ -21,7 +21,47 @@ class ResultBreadthFirstSearchShortestReach {
 
     public static List<Integer> bfs(int n, int m, List<List<Integer>> edges, int s) {
         // Write your code here
-        return null;
+        Set<Integer> adj[] = new HashSet[n];
+        int[] dist = new int[n];
+        for (int i = 0; i < n; i++) {
+            adj[i] = new HashSet<>();
+            dist[i] = -1;
+        }
+
+        for (int i = 0; i < m; i++) {
+            int v = edges.get(i).get(0);
+            int w = edges.get(i).get(1);
+            adj[v-1].add(w-1);
+            adj[w-1].add(v-1);
+        }
+
+        boolean visted[] = new boolean[n];
+        Queue<Integer> queue = new LinkedList<>();
+        visted[s-1] = true;
+        queue.add(s-1);
+
+        while (queue.size() != 0) {
+            s = queue.poll();
+            if (dist[s] < 0) dist[s] = 0;
+
+            Iterator<Integer> iterator = adj[s].iterator();
+            while (iterator.hasNext()) {
+                int k = iterator.next();
+                if (!visted[k]) {
+                    visted[k] = true;
+                    queue.add(k);
+                    dist[k] = dist[s] + 6;
+                }
+            }
+        }
+
+        List<Integer> res = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            if (dist[i] != 0) {
+                res.add(dist[i]);
+            }
+        }
+        return res;
     }
 
 }
