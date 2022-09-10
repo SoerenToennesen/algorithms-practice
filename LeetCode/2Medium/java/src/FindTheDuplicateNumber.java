@@ -1,7 +1,10 @@
 class FindTheDuplicateNumber {
     public int findDuplicate(int[] nums) {
-
-        return 1;
+        int res = -1;
+        for (int num : nums) {
+            res ^= num;
+        }
+        return res;
     }
 
     public static void main(String[] args) {
