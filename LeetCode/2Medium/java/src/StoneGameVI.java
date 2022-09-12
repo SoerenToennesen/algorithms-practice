@@ -18,6 +18,7 @@ class ElementStoneGameVI implements Comparable<ElementStoneGameVI> {
 
 class StoneGameVI {
     public int stoneGameVI(int[] aliceValues, int[] bobValues) {
+        //TODO: Implement a priority queue data structure instead, as pop takes O(1) time
         List<ElementStoneGameVI> aliceElements = new ArrayList<>();
         List<ElementStoneGameVI> bobElements = new ArrayList<>();
         for (int i = 0; i < aliceValues.length; i++) {
