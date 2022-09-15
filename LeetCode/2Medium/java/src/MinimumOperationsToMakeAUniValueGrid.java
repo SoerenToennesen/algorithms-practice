@@ -1,7 +1,27 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class MinimumOperationsToMakeAUniValueGrid {
     public int minOperations(int[][] grid, int x) {
-
-        return -1;
+        List<Integer> storedValues = new ArrayList<>();
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[0].length; j++) {
+                storedValues.add(grid[i][j]);
+            }
+        }
+        int median = storedValues.get(storedValues.size() / 2);
+        int operations = 0;
+        for (int i = 0; i < storedValues.size(); i++) {
+            int tempValue = storedValues.get(i);
+            boolean increasing = true;
+            if (tempValue > median) increasing = false;
+            while (tempValue != median) {
+                if (tempValue > median && increasing || tempValue < median && !increasing) return -1;
+                tempValue += increasing ? x : -x;
+                operations++;
+            }
+        }
+        return operations;
     }
 
     public static void main(String[] args) {
