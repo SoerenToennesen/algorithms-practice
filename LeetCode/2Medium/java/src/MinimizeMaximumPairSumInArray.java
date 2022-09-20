@@ -1,7 +1,14 @@
+import java.util.Arrays;
+
 public class MinimizeMaximumPairSumInArray {
     public int minPairSum(int[] nums) {
-
-        return -1;
+        Arrays.sort(nums);
+        int res = 0;
+        for (int i = 0; i < nums.length / 2; i++) {
+            int tempPairSum = nums[i] + nums[nums.length - 1 - i];
+            if (tempPairSum > res) res = tempPairSum;
+        }
+        return res;
     }
 
     public static void main(String[] args) {
