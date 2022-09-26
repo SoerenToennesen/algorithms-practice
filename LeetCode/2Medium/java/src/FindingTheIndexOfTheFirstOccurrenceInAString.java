@@ -2,7 +2,6 @@ public class FindingTheIndexOfTheFirstOccurrenceInAString {
     public int strStr(String haystack, String needle) {
         int charCounter = needle.length();
         int res = -1;
-
         for (int i = 0; i < haystack.length(); i++) {
             if (haystack.charAt(i) == needle.charAt(needle.length() - charCounter)) {
                 charCounter--;
@@ -13,7 +12,6 @@ public class FindingTheIndexOfTheFirstOccurrenceInAString {
                 res = -1;
             }
         }
-
         return res;
     }
 
