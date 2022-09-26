@@ -1,7 +1,18 @@
 public class FindingTheIndexOfTheFirstOccurrenceInAString {
     public int strStr(String haystack, String needle) {
-
-        return -1;
+        int charCounter = needle.length();
+        int res = -1;
+        for (int i = 0; i < haystack.length(); i++) {
+            if (haystack.charAt(i) == needle.charAt(needle.length() - charCounter)) {
+                charCounter--;
+                if (res == -1) res = i;
+                if (charCounter == 0) return res;
+            } else {
+                charCounter = needle.length();
+                res = -1;
+            }
+        }
+        return res;
     }
 
     public static void main(String[] args) {
