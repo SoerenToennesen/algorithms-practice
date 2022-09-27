@@ -1,6 +1,19 @@
+import java.util.*;
+
 public class DistantBarcodes {
 
     public int[] rearrangeBarcodes(int[] barcodes) {
+        LinkedHashMap<Integer, Integer> typeCount = new LinkedHashMap();
+        for (int i = 0; i < barcodes.length; i++) {
+            typeCount.merge(barcodes[i], 1, Integer::sum);
+        }
+        int[][] insertList = new int[typeCount.size()][2];
+        int i = 0;
+        typeCount.entrySet().stream().sorted(Map.Entry.comparingByValue()).forEach(entry -> {
+            insertList[i][0] = entry.getKey();
+            insertList[i][1] = entry.getValue();
+            i++;
+        });
 
         return new int[] {-1};
     }
