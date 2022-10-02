@@ -1,7 +1,6 @@
 public class MinimumOperationsToMakeAnArrayEqual {
     public int minOperations(int n) {
-
-        return -1;
+        return (((n-1)/2 + 1) * n) / 2 - (n % 2 != 0 ? 1 : 0);
     }
 
     public static void main(String[] args) {
