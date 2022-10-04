@@ -3,12 +3,11 @@ public class BrokenCalculator {
         //TODO: Fix me. Current logic is incorrect.
         int calculations = 0;
         while (startValue != target) {
-            int doubleValue = startValue * 2;
-            int decrementValue = startValue - 1;
-            if (Math.abs(target - doubleValue) < Math.abs(target - decrementValue) &&
-                    Math.abs(target - doubleValue) < Math.abs(target - decrementValue*2))
-                startValue = doubleValue;
-            else startValue = decrementValue;
+            if (target > startValue) {
+                target /= 2;
+            } else {
+                target++;
+            }
             calculations++;
         }
         return calculations;
