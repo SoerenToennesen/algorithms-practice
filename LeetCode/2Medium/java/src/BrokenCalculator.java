@@ -1,6 +1,5 @@
 public class BrokenCalculator {
     public int brokenCalc(int startValue, int target) {
-        //TODO: Fix me. Current logic is incorrect.
         int calculations = 0;
         while (startValue != target) {
             if (target > startValue) {
