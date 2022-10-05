@@ -11,7 +11,6 @@ public class BrokenCalculator {
         }
         return calculations;
     }
-
     public static void main(String[] args) {
         BrokenCalculator solution = new BrokenCalculator();
         int res1 = solution.brokenCalc(2,3); //2
