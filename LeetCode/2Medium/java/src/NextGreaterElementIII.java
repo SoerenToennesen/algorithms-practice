@@ -3,27 +3,34 @@ import java.util.HashMap;
 
 public class NextGreaterElementIII {
     public int nextGreaterElement(int n) {
-        String strInt = "" + n;
-        int[][] digitList = new int[10][2];
-        for (int i = 0; i < strInt.length(); i++) {
-            int digit = Integer.parseInt(String.valueOf(strInt.charAt(i)));
-            if (digitList[digit][0] != digit) {
-                digitList[digit][0] = digit;
-                digitList[digit][1] = i;
-            }
-            for (int j = 0; j < 10; j++) {
-                if (digitList[j][0] == i && j < digit) {
-                    return Integer.parseInt(
-                        strInt.substring(0, digitList[j][1] - 1) +
-                        digit +
-                        strInt.substring(digitList[j][1] + 1, i - 1) +
-                        digitList[j][1] +
-                        strInt.substring(i + 1));
-                }
-            }
-
+        String number = Integer.toString(n);
+        char[] num = number.toCharArray();
+        int len = num.length;
+        int i = len-1;
+        while(i>0){
+            if(num[i] > num[i-1]) break;
+            i--;
         }
-        return -1;
+        if(i==0) return -1;
+        int j = i-1;
+        i = len-1;
+        while(i>j){
+            if(num[j] < num[i]){
+                char temp = num[j];
+                num[j] = num[i];
+                num[i] = temp;
+                break;
+            }
+            i--;
+        }
+        StringBuilder ans_str = new StringBuilder();
+        for(i=0;i<=j;i++) ans_str.append(num[i]);
+        for(i=len-1;i>j;i--) ans_str.append(num[i]);
+
+        long ans = Long.parseLong(ans_str.toString());
+
+        if(ans > Integer.MAX_VALUE) return -1;
+        return (int)ans;
     }
 
     public static void main(String[] args) {
