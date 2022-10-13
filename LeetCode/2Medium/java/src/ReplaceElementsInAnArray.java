@@ -1,7 +1,17 @@
+import java.util.*;
+
 public class ReplaceElementsInAnArray {
     public int[] arrayChange(int[] nums, int[][] operations) {
-        // TODO: Implement me
-        return new int[]{};
+        HashMap<Integer, Integer> numsMap = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            numsMap.put(nums[i], i);
+        }
+        for (int i = 0; i < operations.length; i++) {
+            int index = numsMap.get(operations[i][0]);
+            nums[index] = operations[i][1];
+            numsMap.put(operations[i][1], index);
+        }
+        return nums;
     }
 
     public static void main(String[] args) {
@@ -14,7 +24,7 @@ public class ReplaceElementsInAnArray {
         }
         System.out.println(" ");
         for (int i = 0; i < res2.length; i++) {
-            System.out.print(res2[i]);
+            System.out.print(res2[i] + ",");
         }
     }
 }
