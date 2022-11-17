@@ -1,7 +1,17 @@
 public class MaximumProductSubarray {
     public int maxProduct(int[] nums) {
-
-        return -1;
+        if (nums.length == 0) return 0;
+        int maximum = nums[0];
+        int minimum = nums[0];
+        int res = maximum;
+        for (int i = 1; i < nums.length; i++) {
+            int current = nums[i];
+            int temp_max = Math.max(current, Math.max(maximum * current, minimum * current));
+            minimum = Math.min(current, Math.min(maximum * current, minimum * current));
+            maximum = temp_max;
+            res = Math.max(maximum, res);
+        }
+        return res;
     }
 
     public static void main(String[] args) {
